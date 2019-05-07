@@ -11,23 +11,38 @@ import CoreData
 
 class MainScreenController: UIViewController {
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var moviesSearchBar: UISearchBar!
     
     var collectionViewFlowLayout: UICollectionViewFlowLayout!
     var moviesObjects : MoviesObjects?
     var moviesCoreData : [MoviesCoreData?]?
+    var moviesDataShow : [MoviesCoreData?]? // nanti buat search
     var isConnected = false
     var isSearching = false
     let dispatchGroup = DispatchGroup()
     var imageDatas = [Data]()
+    var selectedIndexPath: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        configureCollectionView()
         configureNetwork()
     }
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
         setupCollectionCellItemSize()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.toDetailScreen {
+            let detailNewsController = segue.destination as! DetailScreenController
+            guard let selectedIndexPath = selectedIndexPath,
+                let moviesCoreDatas = moviesCoreData
+            else { return }
+            
+            detailNewsController.selectedIndexPath = selectedIndexPath
+            detailNewsController.moviesCoreData = moviesCoreDatas
+        }
     }
     
     private func configureNetwork() {
@@ -60,7 +75,7 @@ class MainScreenController: UIViewController {
         }
     }
     
-    private func configureView() {
+    private func configureCollectionView() {
         moviesCollectionView.delegate = self
         moviesCollectionView.dataSource = self
         let nib = UINib(nibName: Constant.moviesNibCollectionCell, bundle: nil)
@@ -114,7 +129,7 @@ class MainScreenController: UIViewController {
                 for i in 0..<title.count {
                     let currentMovies = NSManagedObject(entity: currentMoviesEntityDescription, insertInto: context)
                     currentMovies.setValue(title[i], forKey: CoreDataConstant.title)
-                    currentMovies.setValue(overview[i], forKey: CoreDataConstant.overView)
+                    currentMovies.setValue(overview[i], forKey: CoreDataConstant.overview)
                     currentMovies.setValue(originalLanguage[i], forKey: CoreDataConstant.originalLanguage)
                     currentMovies.setValue(releaseDate[i], forKey: CoreDataConstant.releaseDate)
                     currentMovies.setValue(voteAverage[i], forKey: CoreDataConstant.voteAverage)
@@ -168,7 +183,7 @@ class MainScreenController: UIViewController {
         
         for i in 0..<title.count {
             request.propertiesToUpdate = [CoreDataConstant.title: title[i]]
-            request.propertiesToUpdate = [CoreDataConstant.overView: overview[i]]
+            request.propertiesToUpdate = [CoreDataConstant.overview: overview[i]]
             request.propertiesToUpdate = [CoreDataConstant.voteAverage: voteAverage[i]]
             request.propertiesToUpdate = [CoreDataConstant.releaseDate: releaseDate[i]]
             request.propertiesToUpdate = [CoreDataConstant.originalLanguage: originalLanguage[i]]
@@ -189,7 +204,12 @@ class MainScreenController: UIViewController {
 
 extension MainScreenController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if self.moviesCoreData != nil {
+            return self.moviesCoreData?.count ?? 0
+        }
+        else {
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -207,6 +227,8 @@ extension MainScreenController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
+        selectedIndexPath = indexPath.row
+        performSegue(withIdentifier: Segue.toDetailScreen, sender: self.prepare)
     }
     
     

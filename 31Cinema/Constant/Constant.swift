@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Segue {
+    static let toDetailScreen = "detailScreen"
+}
+
 struct Constant {
     static let moviesIdentifierCollectionCell = "moviesCollectionCell"
     static let moviesNibCollectionCell = "MoviesCollectionViewCell"
@@ -15,8 +19,9 @@ struct Constant {
 
 struct CoreDataConstant {
     static let entityCurrentMovie = "CurrentMovie"
+    static let entityFavoritedMovie = "FavoritedMovie"
     static let title = "title"
-    static let overView = "overview"
+    static let overview = "overview"
     static let voteAverage = "voteAverage"
     static let releaseDate = "releaseDate"
     static let originalLanguage = "originalLanguage"

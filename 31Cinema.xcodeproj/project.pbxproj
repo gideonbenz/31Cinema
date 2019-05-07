@@ -24,6 +24,13 @@
 		BDB48E452281106300198CAD /* MoviesCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E442281106300198CAD /* MoviesCoreData.swift */; };
 		BDB48E48228120A100198CAD /* Cinema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E46228120A100198CAD /* Cinema.xcdatamodeld */; };
 		BDB48E4A228135CC00198CAD /* CurrentMovie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E49228135CC00198CAD /* CurrentMovie+CoreDataClass.swift */; };
+		BDB48E4D2281468C00198CAD /* FavoriteScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB48E4C2281468C00198CAD /* FavoriteScreen.storyboard */; };
+		BDB48E502281474300198CAD /* DetailScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB48E4F2281474300198CAD /* DetailScreen.storyboard */; };
+		BDB48E5222815B9F00198CAD /* DetailScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E5122815B9F00198CAD /* DetailScreenController.swift */; };
+		BDB48E542281899500198CAD /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDB48E532281899500198CAD /* Navigation.storyboard */; };
+		BDB48E5A2281A39500198CAD /* FavoritedMovie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E592281A39500198CAD /* FavoritedMovie+CoreDataClass.swift */; };
+		BDB48E5C2281B21C00198CAD /* FavoritedScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E5B2281B21C00198CAD /* FavoritedScreenController.swift */; };
+		BDB48E5E2281B38500198CAD /* FavoritedMoviesCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E5D2281B38500198CAD /* FavoritedMoviesCoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +53,13 @@
 		BDB48E442281106300198CAD /* MoviesCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCoreData.swift; sourceTree = "<group>"; };
 		BDB48E47228120A100198CAD /* 31Cinema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = 31Cinema.xcdatamodel; sourceTree = "<group>"; };
 		BDB48E49228135CC00198CAD /* CurrentMovie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentMovie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BDB48E4C2281468C00198CAD /* FavoriteScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteScreen.storyboard; sourceTree = "<group>"; };
+		BDB48E4F2281474300198CAD /* DetailScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailScreen.storyboard; sourceTree = "<group>"; };
+		BDB48E5122815B9F00198CAD /* DetailScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenController.swift; sourceTree = "<group>"; };
+		BDB48E532281899500198CAD /* Navigation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
+		BDB48E592281A39500198CAD /* FavoritedMovie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavoritedMovie+CoreDataClass.swift"; path = "/Users/gideonbenz/31Cinema/FavoritedMovie+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		BDB48E5B2281B21C00198CAD /* FavoritedScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedScreenController.swift; sourceTree = "<group>"; };
+		BDB48E5D2281B38500198CAD /* FavoritedMoviesCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedMoviesCoreData.swift; sourceTree = "<group>"; };
 		DC8D021FEFC9CC1A225CF725 /* Pods-31Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-31Cinema.debug.xcconfig"; path = "Target Support Files/Pods-31Cinema/Pods-31Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		DF3CBA489978E825186F81CA /* Pods_31Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_31Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB48E49228135CC00198CAD /* CurrentMovie+CoreDataClass.swift */,
+				BDB48E592281A39500198CAD /* FavoritedMovie+CoreDataClass.swift */,
 				BD037F3E227FAB5000E6416B /* 31Cinema */,
 				BD037F3D227FAB5000E6416B /* Products */,
 				200F110862267193D317B062 /* Frameworks */,
@@ -118,7 +133,11 @@
 		BDB48E0B227FC1D400198CAD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BDB48E12227FC40000198CAD /* Main Screen */,
+				BDB48E4E2281472100198CAD /* Collection View Cell */,
+				BDB48E532281899500198CAD /* Navigation.storyboard */,
+				BDB48E09227FC05F00198CAD /* MainScreen.storyboard */,
+				BDB48E4F2281474300198CAD /* DetailScreen.storyboard */,
+				BDB48E4C2281468C00198CAD /* FavoriteScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,7 +145,10 @@
 		BDB48E0E227FC26000198CAD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BDB48E17227FC49700198CAD /* Main Screen */,
+				BDB48E18227FC4A300198CAD /* Collection View Cell */,
+				BDB48E0C227FC25200198CAD /* MainScreenController.swift */,
+				BDB48E5122815B9F00198CAD /* DetailScreenController.swift */,
+				BDB48E5B2281B21C00198CAD /* FavoritedScreenController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -137,26 +159,9 @@
 				BDB48E0F227FC2A800198CAD /* MoviesObjects.swift */,
 				BDB48E212280287E00198CAD /* MoviesResult.swift */,
 				BDB48E442281106300198CAD /* MoviesCoreData.swift */,
+				BDB48E5D2281B38500198CAD /* FavoritedMoviesCoreData.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		BDB48E12227FC40000198CAD /* Main Screen */ = {
-			isa = PBXGroup;
-			children = (
-				BDB48E09227FC05F00198CAD /* MainScreen.storyboard */,
-				BDB48E14227FC48900198CAD /* MoviesCollectionViewCell.xib */,
-			);
-			path = "Main Screen";
-			sourceTree = "<group>";
-		};
-		BDB48E17227FC49700198CAD /* Main Screen */ = {
-			isa = PBXGroup;
-			children = (
-				BDB48E18227FC4A300198CAD /* Collection View Cell */,
-				BDB48E0C227FC25200198CAD /* MainScreenController.swift */,
-			);
-			path = "Main Screen";
 			sourceTree = "<group>";
 		};
 		BDB48E18227FC4A300198CAD /* Collection View Cell */ = {
@@ -183,6 +188,14 @@
 				BDB48E4222810B8C00198CAD /* PersistenceService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		BDB48E4E2281472100198CAD /* Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BDB48E14227FC48900198CAD /* MoviesCollectionViewCell.xib */,
+			);
+			path = "Collection View Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +258,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD037F4D227FAB5100E6416B /* LaunchScreen.storyboard in Resources */,
+				BDB48E502281474300198CAD /* DetailScreen.storyboard in Resources */,
 				BD037F4A227FAB5100E6416B /* Assets.xcassets in Resources */,
 				BDB48E0A227FC05F00198CAD /* MainScreen.storyboard in Resources */,
+				BDB48E4D2281468C00198CAD /* FavoriteScreen.storyboard in Resources */,
 				BDB48E16227FC48900198CAD /* MoviesCollectionViewCell.xib in Resources */,
+				BDB48E542281899500198CAD /* Navigation.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +301,8 @@
 			files = (
 				BDB48E4A228135CC00198CAD /* CurrentMovie+CoreDataClass.swift in Sources */,
 				BDB48E10227FC2A800198CAD /* MoviesObjects.swift in Sources */,
+				BDB48E5E2281B38500198CAD /* FavoritedMoviesCoreData.swift in Sources */,
+				BDB48E5222815B9F00198CAD /* DetailScreenController.swift in Sources */,
 				BD037F40227FAB5000E6416B /* AppDelegate.swift in Sources */,
 				BDB48E20227FDD9100198CAD /* NetworkProcessor.swift in Sources */,
 				BDB48E222280287E00198CAD /* MoviesResult.swift in Sources */,
@@ -293,6 +311,8 @@
 				BDB48E0D227FC25200198CAD /* MainScreenController.swift in Sources */,
 				BDB48E15227FC48900198CAD /* MoviesCollectionViewCell.swift in Sources */,
 				BDB48E1B227FC61800198CAD /* Constant.swift in Sources */,
+				BDB48E5A2281A39500198CAD /* FavoritedMovie+CoreDataClass.swift in Sources */,
+				BDB48E5C2281B21C00198CAD /* FavoritedScreenController.swift in Sources */,
 				BDB48E48228120A100198CAD /* Cinema.xcdatamodeld in Sources */,
 				BDB48E1E227FD6F200198CAD /* NetworkService.swift in Sources */,
 			);
