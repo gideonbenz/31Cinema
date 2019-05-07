@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ANn-Gx-Twc">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Screen Controller-->
+        <scene sceneID="Dwp-6A-phe">
+            <objects>
+                <viewController id="ANn-Gx-Twc" customClass="MainScreenController" customModule="_1Cinema" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XIR-Nc-JaA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="P1L-WW-qHb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ctx-zP-rJT">
+                                <rect key="frame" x="0.0" y="100" width="414" height="713"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XZo-0C-dje">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cA-K5-fdL">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="Ymg-16-Cjs"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem systemItem="mostViewed" id="tX6-WS-u3y"/>
+                                    <tabBarItem systemItem="favorites" id="hGF-ta-S2S"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="P1L-WW-qHb" firstAttribute="leading" secondItem="195-nt-t5J" secondAttribute="leading" id="1ht-5Z-0Gi"/>
+                            <constraint firstItem="4cA-K5-fdL" firstAttribute="bottom" secondItem="195-nt-t5J" secondAttribute="bottom" id="553-yT-iYD"/>
+                            <constraint firstItem="P1L-WW-qHb" firstAttribute="top" secondItem="195-nt-t5J" secondAttribute="top" id="En9-pp-IeG"/>
+                            <constraint firstItem="4cA-K5-fdL" firstAttribute="leading" secondItem="195-nt-t5J" secondAttribute="leading" id="Hms-X0-UjS"/>
+                            <constraint firstItem="ctx-zP-rJT" firstAttribute="trailing" secondItem="P1L-WW-qHb" secondAttribute="trailing" id="Kcv-aj-wxc"/>
+                            <constraint firstItem="195-nt-t5J" firstAttribute="trailing" secondItem="4cA-K5-fdL" secondAttribute="trailing" id="MSx-ZP-2rI"/>
+                            <constraint firstItem="ctx-zP-rJT" firstAttribute="leading" secondItem="P1L-WW-qHb" secondAttribute="leading" id="TUx-MP-N3V"/>
+                            <constraint firstItem="ctx-zP-rJT" firstAttribute="top" secondItem="P1L-WW-qHb" secondAttribute="bottom" id="dj8-F3-7a1"/>
+                            <constraint firstItem="195-nt-t5J" firstAttribute="trailing" secondItem="P1L-WW-qHb" secondAttribute="trailing" id="fs3-bn-JXV"/>
+                            <constraint firstItem="4cA-K5-fdL" firstAttribute="top" secondItem="ctx-zP-rJT" secondAttribute="bottom" id="k9H-Wb-5L7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="195-nt-t5J"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="VDX-qJ-Sv8"/>
+                    <connections>
+                        <outlet property="moviesCollectionView" destination="ctx-zP-rJT" id="qrg-wu-s3d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h3T-Yo-tL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230.4347826086957" y="-313.39285714285711"/>
+        </scene>
+    </scenes>
+</document>
