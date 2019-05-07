@@ -14,10 +14,12 @@ struct Constant {
 }
 
 struct CoreDataConstant {
+    static let entityCurrentMovie = "CurrentMovie"
     static let title = "title"
     static let overView = "overview"
     static let voteAverage = "voteAverage"
     static let releaseDate = "releaseDate"
     static let originalLanguage = "originalLanguage"
     static let image = "image"
+    static let id = "id"
 }

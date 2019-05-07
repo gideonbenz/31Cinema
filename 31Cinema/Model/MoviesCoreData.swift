@@ -15,6 +15,7 @@ struct MoviesCoreData {
     let originalLanguage: String
     let releaseDate: String
     let image: Data
+    let id: Int16
     
     init?(movieCoreData: CurrentMovies) {
         let title = movieCoreData.title
@@ -23,6 +24,7 @@ struct MoviesCoreData {
         let originalLanguage = movieCoreData.originalLanguage
         let releaseDate = movieCoreData.releaseDate
         let image = movieCoreData.image
+        let id = movieCoreData.id
         
         self.title = title ?? ""
         self.overview = overview ?? ""
@@ -30,5 +32,6 @@ struct MoviesCoreData {
         self.originalLanguage = originalLanguage ?? ""
         self.releaseDate = releaseDate ?? ""
         self.image = (image ?? NSData()) as Data
+        self.id = id
     }
 }

@@ -20,4 +20,5 @@ public class CurrentMovies: NSManagedObject {
     @NSManaged public var overview: String?
     @NSManaged public var voteAverage: Double
     @NSManaged public var image: NSData?
+    @NSManaged public var id: Int16
 }
