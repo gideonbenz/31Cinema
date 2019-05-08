@@ -67,9 +67,6 @@ class MainScreenController: UIViewController {
                     j+=1
                 }
             }
-            for movies in moviesCoreData {
-                    print(movies?.voteAverage ?? 0)
-            }
             self.moviesCoreData = moviesCoreData
         }
         isSearching = false
@@ -320,7 +317,6 @@ extension MainScreenController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         selectedIndexPath = indexPath.row
         performSegue(withIdentifier: Segue.toDetailScreen, sender: self.prepare)
     }

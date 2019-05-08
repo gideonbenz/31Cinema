@@ -19,11 +19,11 @@ class FavoritedScreenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        configureCoreData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        configureCoreData()
         favoritedCollectionView.reloadData()
     }
     

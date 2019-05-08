@@ -52,7 +52,8 @@ class DetailScreenController: UIViewController {
                 detailOriginLanguageTextLabel.text = favoriteCoreDatas[selectedIndex]?.originalLanguage ?? ""
                 detailOriginLanguageTextLabel.sizeToFit()
                 favoriteButton.setTitle("Favorited", for: .normal)
-                favoriteButton.tintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                favorited = true
+                favoriteButton.setTitleColor(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), for: .normal)
             }
         }
     }
@@ -82,39 +83,44 @@ class DetailScreenController: UIViewController {
         }
     }
     
-    private func deleteFromFavorite() {
+    private func deleteFromFavorite(alert: UIAlertAction) {
+        guard let selectedIndex = selectedIndexPath else { return }
         let managedContext = PersistenceService.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<FavoritedMovie>(entityName:CoreDataConstant.entityFavoritedMovie)
         guard let selectedIndexPath = self.selectedIndexPath else { return }
-        fetchRequest.predicate = NSPredicate(format: "title == %@",moviesCoreData?[selectedIndexPath]?.title ?? "")
-        do
-        {
-            let fetchedResults =  try managedContext.execute(fetchRequest) as? [NSManagedObject]
-            for entity in fetchedResults! {
-                managedContext.delete(entity)
-                print(entity)
+        fetchRequest.predicate = NSPredicate(format: "title == %@",favoritedCoreData?[selectedIndexPath]?.title ?? "" )
+        
+        do {
+           let selectedMovies = try PersistenceService.context.fetch(fetchRequest)
+            for selectedMovie in selectedMovies {
+                managedContext.delete(selectedMovie)
             }
-        }
-        catch _ {
-            print("Could not delete")
-            
+        } catch {
+            print("failed to fetch requested data")
         }
         
         do {
             try PersistenceService.saveContext()
         } catch  {print("Error: Save delete favorite")}
+        
+        DataManager.shared.favoriteScreenController.fetchCoreData { (favoritedMoviesCoreData) in
+            DataManager.shared.favoriteScreenController.favoritedCoreData = favoritedCoreData
+        }
     }
     
     @IBAction func addAsFavorite(_ sender: UIButton) {
         if favorited {
-            deleteFromFavorite()
+            let alert = UIAlertController(title: "Saved to Favorited", message: "You can open your favorited movies in Favorites Tab", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: deleteFromFavorite))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
             sender.setTitle("+Favorite", for: .normal)
             sender.tintColor = #colorLiteral(red: 0, green: 0.8235294118, blue: 0.5568627451, alpha: 1)
         }
         else {
             saveToFavorite()
             sender.setTitle("Favorited", for: .normal)
-            sender.tintColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+            sender.setTitleColor(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), for: .normal)
             let alert = UIAlertController(title: "Saved to Favorited", message: "You can open your favorited movies in Favorites Tab", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
