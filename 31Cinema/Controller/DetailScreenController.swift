@@ -75,6 +75,9 @@ class DetailScreenController: UIViewController {
                         print("error Save",error)
                     }
         }
+        DataManager.shared.favoriteScreenController.fetchCoreData { (favoritedCoreData) in
+            DataManager.shared.favoriteScreenController.favoritedCoreData = favoritedCoreData
+        }
     }
     
     private func deleteFromFavorite() {
@@ -104,14 +107,17 @@ class DetailScreenController: UIViewController {
         if favorited {
             deleteFromFavorite()
             sender.setTitle("+Favorite", for: .normal)
-            sender.tintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            sender.tintColor = #colorLiteral(red: 0, green: 0.8235294118, blue: 0.5568627451, alpha: 1)
         }
         else {
             saveToFavorite()
             sender.setTitle("Favorited", for: .normal)
-            sender.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-        favorited = !favorited
+            sender.tintColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+            let alert = UIAlertController(title: "Saved to Favorited", message: "You can open your favorited movies in Favorites Tab", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
+        favorited = !favorited
     }
     
     

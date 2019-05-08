@@ -31,6 +31,8 @@
 		BDB48E5A2281A39500198CAD /* FavoritedMovie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E592281A39500198CAD /* FavoritedMovie+CoreDataClass.swift */; };
 		BDB48E5C2281B21C00198CAD /* FavoritedScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E5B2281B21C00198CAD /* FavoritedScreenController.swift */; };
 		BDB48E5E2281B38500198CAD /* FavoritedMoviesCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E5D2281B38500198CAD /* FavoritedMoviesCoreData.swift */; };
+		BDB48E60228271E800198CAD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E5F228271E800198CAD /* Reachability.swift */; };
+		BDB48E642282872A00198CAD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB48E632282872A00198CAD /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		BDB48E592281A39500198CAD /* FavoritedMovie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FavoritedMovie+CoreDataClass.swift"; path = "/Users/gideonbenz/31Cinema/FavoritedMovie+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		BDB48E5B2281B21C00198CAD /* FavoritedScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedScreenController.swift; sourceTree = "<group>"; };
 		BDB48E5D2281B38500198CAD /* FavoritedMoviesCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritedMoviesCoreData.swift; sourceTree = "<group>"; };
+		BDB48E5F228271E800198CAD /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BDB48E632282872A00198CAD /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		DC8D021FEFC9CC1A225CF725 /* Pods-31Cinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-31Cinema.debug.xcconfig"; path = "Target Support Files/Pods-31Cinema/Pods-31Cinema.debug.xcconfig"; sourceTree = "<group>"; };
 		DF3CBA489978E825186F81CA /* Pods_31Cinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_31Cinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB48E1A227FC61800198CAD /* Constant.swift */,
+				BDB48E632282872A00198CAD /* DataManager.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				BDB48E1D227FD6F200198CAD /* NetworkService.swift */,
 				BDB48E1F227FDD9100198CAD /* NetworkProcessor.swift */,
 				BDB48E4222810B8C00198CAD /* PersistenceService.swift */,
+				BDB48E5F228271E800198CAD /* Reachability.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -305,6 +311,8 @@
 				BDB48E5222815B9F00198CAD /* DetailScreenController.swift in Sources */,
 				BD037F40227FAB5000E6416B /* AppDelegate.swift in Sources */,
 				BDB48E20227FDD9100198CAD /* NetworkProcessor.swift in Sources */,
+				BDB48E60228271E800198CAD /* Reachability.swift in Sources */,
+				BDB48E642282872A00198CAD /* DataManager.swift in Sources */,
 				BDB48E222280287E00198CAD /* MoviesResult.swift in Sources */,
 				BDB48E4322810B8C00198CAD /* PersistenceService.swift in Sources */,
 				BDB48E452281106300198CAD /* MoviesCoreData.swift in Sources */,

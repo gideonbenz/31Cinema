@@ -10,17 +10,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Favorited Screen Controller-->
+        <!--Favorites-->
         <scene sceneID="bjZ-Sf-p7O">
             <objects>
                 <viewController id="4j2-q0-YKy" customClass="FavoritedScreenController" customModule="_1Cinema" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AnU-Tm-S1J">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-W3-Xin">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="722"/>
+                                <color key="backgroundColor" red="0.30196078430000001" green="0.27450980390000002" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ISZ-7D-m1i">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -30,7 +30,7 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.30196078430000001" green="0.27450980390000002" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7I1-W3-Xin" firstAttribute="top" secondItem="pXY-78-B7h" secondAttribute="top" id="BNG-q9-ilZ"/>
                             <constraint firstItem="pXY-78-B7h" firstAttribute="trailing" secondItem="7I1-W3-Xin" secondAttribute="trailing" id="EqP-au-oU5"/>
@@ -39,7 +39,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pXY-78-B7h"/>
                     </view>
-                    <navigationItem key="navigationItem" id="i4l-T8-xgn"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="i4l-T8-xgn"/>
                     <connections>
                         <outlet property="favoritedCollectionView" destination="7I1-W3-Xin" id="kFv-dp-OIF"/>
                         <segue destination="pYI-87-9aN" kind="show" identifier="detailScreen" id="WbW-hl-sUM"/>
@@ -63,9 +63,16 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iQb-6G-jqK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="lUc-gv-iHc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fKY-Sg-R1a">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="fKY-Sg-R1a">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.30196078430000001" green="0.27450980390000002" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.98431372549999996" green="0.82352941180000006" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.98431372549999996" green="0.82352941180000006" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

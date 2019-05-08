@@ -22,6 +22,11 @@ class FavoritedScreenController: UIViewController {
         configureCoreData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        favoritedCollectionView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         setupCollectionCellItemSize()
     }
@@ -68,7 +73,7 @@ class FavoritedScreenController: UIViewController {
         }
     }
     
-    private func fetchCoreData(completion: ([FavoritedMoviesCoreData?]) -> Void) {
+    func fetchCoreData(completion: ([FavoritedMoviesCoreData?]) -> Void) {
         var favoriteCoreDatas = [FavoritedMoviesCoreData?]()
         let fetchRequest: NSFetchRequest<FavoritedMovie> = FavoritedMovie.fetchRequest()
         do {
