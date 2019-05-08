@@ -11,6 +11,7 @@ import Foundation
 struct MoviesResult {
     let title: String
     let voteAverage: Double
+    let popularity: Double
     let releaseDate: String
     let originalLanguage: String
     let overview: String
@@ -23,11 +24,13 @@ struct MoviesResult {
         static let originalLanguage = "original_language"
         static let overview = "overview"
         static let imageString = "poster_path"
+        static let popularity = "popularity"
     }
     
     init?(json: JSON) {
         guard let title = json[resultKeys.title] as? String,
             let voteAverage = json[resultKeys.voteAverage] as? Double,
+            let popularity = json[resultKeys.popularity] as? Double,
             let releaseDate = json[resultKeys.releaseDate] as? String,
             let originalLanguage = json[resultKeys.originalLanguage] as? String,
             let overview = json[resultKeys.overview] as? String,
@@ -36,6 +39,7 @@ struct MoviesResult {
         
         self.title = title
         self.voteAverage = voteAverage
+        self.popularity = popularity
         self.releaseDate = releaseDate
         self.originalLanguage = originalLanguage
         self.overview = overview

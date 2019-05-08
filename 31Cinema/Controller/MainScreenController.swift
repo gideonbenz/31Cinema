@@ -82,7 +82,7 @@ class MainScreenController: UIViewController {
                 var j = 0
                 while j+1 < moviesCoreData.count {
                     var containerMovie : MoviesCoreData?
-                    if moviesCoreData[j]?.releaseDate ?? "" < moviesCoreData[j+1]?.releaseDate ?? "" {
+                    if moviesCoreData[j]?.popularity ?? 0 < moviesCoreData[j+1]?.popularity ?? 0 {
                         containerMovie = moviesCoreData[j]
                         moviesCoreData[j] = moviesCoreData[j+1]
                         moviesCoreData[j+1] = containerMovie
@@ -125,15 +125,17 @@ class MainScreenController: UIViewController {
                     let mappedOriginalLanguage = self.moviesObjects?.movieResult.map{$0?.originalLanguage ?? ""}
                     let mappedReleaseDate = self.moviesObjects?.movieResult.map{$0?.releaseDate ?? ""}
                     let mappedVoteAverage = self.moviesObjects?.movieResult.map{$0?.voteAverage ?? 0}
+                    let mappedPopularity = self.moviesObjects?.movieResult.map{$0?.popularity ?? 0}
                     
                     guard let title = mappedTitle,
                         let overview = mappedOverview,
                         let originalLanguage = mappedOriginalLanguage,
                         let releaseDate = mappedReleaseDate,
-                        let voteAverage = mappedVoteAverage
+                        let voteAverage = mappedVoteAverage,
+                        let popularity = mappedPopularity
                         else { return }
                     
-                    self.setCacheCoreDataCotainer(title: title, overview: overview, originalLanguage: originalLanguage, releaseDate: releaseDate, voteAverage: voteAverage, imageDatas: self.imageDatas)
+                    self.setCacheCoreDataCotainer(title: title, overview: overview, originalLanguage: originalLanguage, releaseDate: releaseDate, voteAverage: voteAverage, popularity: popularity, imageDatas: self.imageDatas)
                 })
             }
         }
@@ -190,7 +192,7 @@ class MainScreenController: UIViewController {
         }
     }
     
-    private func setCacheCoreDataCotainer(title: [String], overview: [String], originalLanguage: [String], releaseDate: [String], voteAverage: [Double], imageDatas: [Data]) {
+    private func setCacheCoreDataCotainer(title: [String], overview: [String], originalLanguage: [String], releaseDate: [String], voteAverage: [Double], popularity: [Double], imageDatas: [Data]) {
         let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
         let context = PersistenceService.persistentContainer.viewContext
         if let currentMoviesEntityDescription = NSEntityDescription.entity(forEntityName: CoreDataConstant.entityCurrentMovie, in: context) {
@@ -202,6 +204,7 @@ class MainScreenController: UIViewController {
                     currentMovies.setValue(originalLanguage[i], forKey: CoreDataConstant.originalLanguage)
                     currentMovies.setValue(releaseDate[i], forKey: CoreDataConstant.releaseDate)
                     currentMovies.setValue(voteAverage[i], forKey: CoreDataConstant.voteAverage)
+                    currentMovies.setValue(popularity[i], forKey: CoreDataConstant.popularity)
                     currentMovies.setValue(imageDatas[i], forKey: CoreDataConstant.image)
                     currentMovies.setValue(i, forKey: CoreDataConstant.id)
                     do {
@@ -221,7 +224,7 @@ class MainScreenController: UIViewController {
                 UserDefaults.standard.set(true, forKey: "firstRun")
             }
             else {
-                updateCoreData(title: title, overview: overview, originalLanguage: originalLanguage, releaseDate: releaseDate, voteAverage: voteAverage, imageDatas: imageDatas) { (movieCoreDatas) in
+                updateCoreData(title: title, overview: overview, originalLanguage: originalLanguage, releaseDate: releaseDate, voteAverage: voteAverage, popularity: popularity, imageDatas: imageDatas) { (movieCoreDatas) in
                     DispatchQueue.main.async {
                         self.moviesCoreData = movieCoreDatas
                         self.moviesCollectionView.reloadData()
@@ -246,7 +249,7 @@ class MainScreenController: UIViewController {
         }
     }
     
-    private func updateCoreData(title: [String], overview: [String], originalLanguage: [String], releaseDate: [String], voteAverage: [Double], imageDatas: [Data], completion: ([MoviesCoreData?]) -> Void) {
+    private func updateCoreData(title: [String], overview: [String], originalLanguage: [String], releaseDate: [String], voteAverage: [Double], popularity: [Double], imageDatas: [Data], completion: ([MoviesCoreData?]) -> Void) {
         let context = PersistenceService.persistentContainer.viewContext
         let request = NSBatchUpdateRequest(entityName: CoreDataConstant.entityCurrentMovie)
         
@@ -254,10 +257,12 @@ class MainScreenController: UIViewController {
             request.propertiesToUpdate = [CoreDataConstant.title: title[i]]
             request.propertiesToUpdate = [CoreDataConstant.overview: overview[i]]
             request.propertiesToUpdate = [CoreDataConstant.voteAverage: voteAverage[i]]
+            request.propertiesToUpdate = [CoreDataConstant.popularity: popularity[i]]
             request.propertiesToUpdate = [CoreDataConstant.releaseDate: releaseDate[i]]
             request.propertiesToUpdate = [CoreDataConstant.originalLanguage: originalLanguage[i]]
             request.propertiesToUpdate = [CoreDataConstant.image: imageDatas[i]]
             request.propertiesToUpdate = [CoreDataConstant.id: i]
+            request.resultType = .updatedObjectsCountResultType
             do {
                 try context.execute(request) as! NSBatchUpdateResult
             }

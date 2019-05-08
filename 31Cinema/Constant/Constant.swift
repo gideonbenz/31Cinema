@@ -23,6 +23,7 @@ struct CoreDataConstant {
     static let title = "title"
     static let overview = "overview"
     static let voteAverage = "voteAverage"
+    static let popularity = "popularity" 
     static let releaseDate = "releaseDate"
     static let originalLanguage = "originalLanguage"
     static let image = "image"

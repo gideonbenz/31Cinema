@@ -12,6 +12,7 @@ struct MoviesCoreData {
     let title: String
     let overview: String
     let voteAverage: Double
+    let popularity: Double
     let originalLanguage: String
     let releaseDate: String
     let image: Data
@@ -21,6 +22,7 @@ struct MoviesCoreData {
         let title = movieCoreData.title
         let overview = movieCoreData.overview
         let voteAverage = movieCoreData.voteAverage
+        let popularity = movieCoreData.popularity
         let originalLanguage = movieCoreData.originalLanguage
         let releaseDate = movieCoreData.releaseDate
         let image = movieCoreData.image
@@ -29,6 +31,7 @@ struct MoviesCoreData {
         self.title = title ?? ""
         self.overview = overview ?? ""
         self.voteAverage = voteAverage
+        self.popularity = popularity
         self.originalLanguage = originalLanguage ?? ""
         self.releaseDate = releaseDate ?? ""
         self.image = (image ?? NSData()) as Data
