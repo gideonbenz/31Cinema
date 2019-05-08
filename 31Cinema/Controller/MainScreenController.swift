@@ -53,6 +53,49 @@ class MainScreenController: UIViewController {
         }
     }
     
+    @IBAction func showTopRatedMovie(_ sender: UIButton) {
+        if var moviesCoreData = moviesCoreData {
+            for _ in 0..<moviesCoreData.count {
+                var j = 0
+                while j+1 < moviesCoreData.count {
+                    var containerMovie : MoviesCoreData?
+                    if moviesCoreData[j]?.voteAverage ?? 0 < moviesCoreData[j+1]?.voteAverage ?? 0 {
+                        containerMovie = moviesCoreData[j]
+                        moviesCoreData[j] = moviesCoreData[j+1]
+                        moviesCoreData[j+1] = containerMovie
+                    }
+                    j+=1
+                }
+            }
+            for movies in moviesCoreData {
+                    print(movies?.voteAverage ?? 0)
+            }
+            self.moviesCoreData = moviesCoreData
+        }
+        isSearching = false
+        self.moviesCollectionView.reloadData()
+    }
+    
+    @IBAction func showMostPopularMovie(_ sender: UIButton) {
+        if var moviesCoreData = moviesCoreData {
+            for _ in 0..<moviesCoreData.count {
+                var j = 0
+                while j+1 < moviesCoreData.count {
+                    var containerMovie : MoviesCoreData?
+                    if moviesCoreData[j]?.releaseDate ?? "" < moviesCoreData[j+1]?.releaseDate ?? "" {
+                        containerMovie = moviesCoreData[j]
+                        moviesCoreData[j] = moviesCoreData[j+1]
+                        moviesCoreData[j+1] = containerMovie
+                    }
+                    j+=1
+                }
+            }
+            self.moviesCoreData = moviesCoreData
+        }
+        isSearching = false
+        self.moviesCollectionView.reloadData()
+    }
+    
     private func configureNetwork() {
         let connectionStatus = Reachability().checkReachable()
         connectionStatus ? isConnected == true : isConnected == false

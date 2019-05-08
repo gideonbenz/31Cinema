@@ -31,12 +31,18 @@
                                         <state key="normal" title="Top Rated">
                                             <color key="titleColor" red="0.98431372549999996" green="0.82352941180000006" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="showTopRatedMovie:" destination="ANn-Gx-Twc" eventType="touchUpInside" id="0uF-Qu-IHC"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CsQ-PQ-OHf">
                                         <rect key="frame" x="220" y="0.0" width="91" height="30"/>
                                         <state key="normal" title="Most Popular">
                                             <color key="titleColor" red="0.98431372549999996" green="0.82352941180000006" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="showMostPopularMovie:" destination="ANn-Gx-Twc" eventType="touchUpInside" id="NsP-R3-ffO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

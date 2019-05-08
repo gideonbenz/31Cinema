@@ -35,7 +35,8 @@ class DetailScreenController: UIViewController {
             detailTitleTextLabel.text = moviesCoreDatas[selectedIndex]?.title ?? ""
             detailImageView.image = UIImage(data: moviesCoreDatas[selectedIndex]?.image ?? Data())
             detailRatingValueLabel.text = String(moviesCoreDatas[selectedIndex]?.voteAverage ?? 0.0)
-            detailReleaseTextLabel.text = moviesCoreDatas[selectedIndex]?.releaseDate ?? ""
+            let date = convertDateFormaterToNormal(moviesCoreDatas[selectedIndex]?.releaseDate ?? "")
+            detailReleaseTextLabel.text = date
             detailOverviewTextLabel.text = moviesCoreDatas[selectedIndex]?.overview ?? ""
             detailOriginLanguageTextLabel.text = moviesCoreDatas[selectedIndex]?.originalLanguage ?? ""
             detailOriginLanguageTextLabel.sizeToFit()
@@ -45,7 +46,8 @@ class DetailScreenController: UIViewController {
                 detailTitleTextLabel.text = favoriteCoreDatas[selectedIndex]?.title ?? ""
                 detailImageView.image = UIImage(data: favoriteCoreDatas[selectedIndex]?.image ?? Data())
                 detailRatingValueLabel.text = String(favoriteCoreDatas[selectedIndex]?.voteAverage ?? 0.0)
-                detailReleaseTextLabel.text = favoriteCoreDatas[selectedIndex]?.releaseDate ?? ""
+                let date = convertDateFormaterToNormal(favoriteCoreDatas[selectedIndex]?.releaseDate ?? "")
+                detailReleaseTextLabel.text = date
                 detailOverviewTextLabel.text = favoriteCoreDatas[selectedIndex]?.overview ?? ""
                 detailOriginLanguageTextLabel.text = favoriteCoreDatas[selectedIndex]?.originalLanguage ?? ""
                 detailOriginLanguageTextLabel.sizeToFit()
@@ -119,7 +121,14 @@ class DetailScreenController: UIViewController {
         }
         favorited = !favorited
     }
-    
-    
-    
+}
+
+extension DetailScreenController {
+    private func convertDateFormaterToNormal(_ date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: date)
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        return  dateFormatter.string(from: date!)
+    }
 }
