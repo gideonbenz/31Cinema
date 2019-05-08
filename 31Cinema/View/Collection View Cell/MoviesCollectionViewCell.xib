@@ -19,12 +19,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUO-jZ-xFx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SUO-jZ-xFx">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="SUO-jZ-xFx" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="g5w-C5-eyt"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="SUO-jZ-xFx" secondAttribute="trailing" id="gyT-mO-1dm"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="SUO-jZ-xFx" secondAttribute="bottom" id="tK4-qc-3d0"/>
+                <constraint firstItem="SUO-jZ-xFx" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="wnj-KY-wIK"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="200" height="200"/>
             <connections>
